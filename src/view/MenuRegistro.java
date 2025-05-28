@@ -84,6 +84,25 @@ DefaultTableModel modeloMatricula = new DefaultTableModel(new String[]{"Estudian
         }
     }
     
+    
+    private void limpiarCamposEstudiante() {
+    txtCodEstudiante.setText("");
+    txtNomEstudiante.setText("");
+    }
+    private void limpiarCamposDocente() {
+    txtCodDocente.setText("");
+    txtNomDocente.setText("");
+    }
+    private void limpiarCamposCurso() {
+    txtCodCurso.setText("");
+    txtNomCurso.setText("");
+    jComboBoxDocente.setSelectedIndex(-1);
+    }
+    private void limpiarCamposMatricula() {
+    jComboBoxEstudiante.setSelectedIndex(-1);
+    jComboBoxCurso.setSelectedIndex(-1);
+    txtNota.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,6 +121,7 @@ DefaultTableModel modeloMatricula = new DefaultTableModel(new String[]{"Estudian
         txtCodEstudiante = new javax.swing.JTextField();
         txtNomEstudiante = new javax.swing.JTextField();
         btEstudiante = new javax.swing.JButton();
+        btLimpiarEst = new javax.swing.JButton();
         jPanelDocente = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -109,6 +129,7 @@ DefaultTableModel modeloMatricula = new DefaultTableModel(new String[]{"Estudian
         jLabel9 = new javax.swing.JLabel();
         txtNomDocente = new javax.swing.JTextField();
         btDocente = new javax.swing.JButton();
+        btLimpiarDoct = new javax.swing.JButton();
         jPanelCurso = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -118,6 +139,7 @@ DefaultTableModel modeloMatricula = new DefaultTableModel(new String[]{"Estudian
         jLabel13 = new javax.swing.JLabel();
         jComboBoxDocente = new javax.swing.JComboBox<>();
         btCurso = new javax.swing.JButton();
+        btLimpiarCurs = new javax.swing.JButton();
         jPanelMatricula = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -127,6 +149,7 @@ DefaultTableModel modeloMatricula = new DefaultTableModel(new String[]{"Estudian
         btMatricula = new javax.swing.JButton();
         jComboBoxEstudiante = new javax.swing.JComboBox<>();
         txtNota = new javax.swing.JTextField();
+        btLimpiarMatric = new javax.swing.JButton();
         jPanelDocenteList = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -156,160 +179,252 @@ DefaultTableModel modeloMatricula = new DefaultTableModel(new String[]{"Estudian
         JPanelContenedor.setBackground(new java.awt.Color(255, 255, 255));
         JPanelContenedor.setLayout(new java.awt.CardLayout());
 
-        jPanelEstudiante.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelEstudiante.setBackground(new java.awt.Color(204, 204, 153));
         jPanelEstudiante.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("FORMULARIO ESTUDIANTES");
-        jPanelEstudiante.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 190, 20));
+        jPanelEstudiante.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 260, 20));
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Nombre:");
-        jPanelEstudiante.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 60, -1));
+        jPanelEstudiante.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 130, -1));
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Codigo:");
-        jPanelEstudiante.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 50, -1));
+        jPanelEstudiante.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 120, -1));
+
+        txtCodEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodEstudianteActionPerformed(evt);
+            }
+        });
         jPanelEstudiante.add(txtCodEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 390, -1));
         jPanelEstudiante.add(txtNomEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 390, -1));
 
+        btEstudiante.setBackground(new java.awt.Color(153, 255, 153));
+        btEstudiante.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btEstudiante.setForeground(new java.awt.Color(0, 0, 0));
         btEstudiante.setText("AGREGAR");
+        btEstudiante.setPreferredSize(new java.awt.Dimension(80, 28));
         btEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEstudianteActionPerformed(evt);
             }
         });
-        jPanelEstudiante.add(btEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 100, -1));
+        jPanelEstudiante.add(btEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 100, -1));
+
+        btLimpiarEst.setBackground(new java.awt.Color(153, 255, 255));
+        btLimpiarEst.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btLimpiarEst.setForeground(new java.awt.Color(0, 0, 0));
+        btLimpiarEst.setText("LIMPIAR");
+        btLimpiarEst.setMaximumSize(new java.awt.Dimension(70, 24));
+        btLimpiarEst.setMinimumSize(new java.awt.Dimension(67, 24));
+        btLimpiarEst.setPreferredSize(new java.awt.Dimension(80, 28));
+        btLimpiarEst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimpiarEstActionPerformed(evt);
+            }
+        });
+        jPanelEstudiante.add(btLimpiarEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 100, -1));
 
         JPanelContenedor.add(jPanelEstudiante, "card2");
 
-        jPanelDocente.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelDocente.setBackground(new java.awt.Color(204, 204, 153));
+        jPanelDocente.setForeground(new java.awt.Color(0, 0, 0));
         jPanelDocente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("FORMULARIO DOCENTES");
-        jPanelDocente.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 190, 20));
+        jPanelDocente.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 240, 20));
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Nombre:");
-        jPanelDocente.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 60, -1));
+        jPanelDocente.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 110, -1));
         jPanelDocente.add(txtCodDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 390, -1));
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Codigo:");
-        jPanelDocente.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 50, -1));
-        jPanelDocente.add(txtNomDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 390, -1));
+        jPanelDocente.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 100, -1));
+        jPanelDocente.add(txtNomDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 390, -1));
 
+        btDocente.setBackground(new java.awt.Color(153, 255, 153));
+        btDocente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btDocente.setForeground(new java.awt.Color(0, 0, 0));
         btDocente.setText("AGREGAR");
+        btDocente.setPreferredSize(new java.awt.Dimension(80, 28));
         btDocente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btDocenteActionPerformed(evt);
             }
         });
-        jPanelDocente.add(btDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 110, -1));
+        jPanelDocente.add(btDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 110, -1));
+
+        btLimpiarDoct.setBackground(new java.awt.Color(153, 255, 255));
+        btLimpiarDoct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btLimpiarDoct.setForeground(new java.awt.Color(0, 0, 0));
+        btLimpiarDoct.setText("LIMPIAR");
+        btLimpiarDoct.setMaximumSize(new java.awt.Dimension(70, 24));
+        btLimpiarDoct.setMinimumSize(new java.awt.Dimension(67, 24));
+        btLimpiarDoct.setPreferredSize(new java.awt.Dimension(80, 28));
+        btLimpiarDoct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimpiarDoctActionPerformed(evt);
+            }
+        });
+        jPanelDocente.add(btLimpiarDoct, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 100, -1));
 
         JPanelContenedor.add(jPanelDocente, "card3");
 
-        jPanelCurso.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelCurso.setBackground(new java.awt.Color(204, 204, 153));
         jPanelCurso.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("FORMULARIO PARA CURSOS");
-        jPanelCurso.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 190, 20));
+        jPanelCurso.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 280, 20));
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Codigo Curso:");
-        jPanelCurso.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 90, -1));
+        jPanelCurso.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 180, -1));
         jPanelCurso.add(txtCodCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 390, -1));
 
         jLabel12.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Docente:");
-        jPanelCurso.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 60, -1));
+        jLabel12.setText("Codigo Docente:");
+        jPanelCurso.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 150, -1));
         jPanelCurso.add(txtNomCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 390, -1));
 
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Nombre Curso:");
-        jPanelCurso.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 100, -1));
+        jPanelCurso.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 190, -1));
 
+        jComboBoxDocente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jComboBoxDocente.setForeground(new java.awt.Color(0, 0, 0));
         jComboBoxDocente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
         jPanelCurso.add(jComboBoxDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 390, -1));
 
+        btCurso.setBackground(new java.awt.Color(153, 255, 153));
+        btCurso.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btCurso.setForeground(new java.awt.Color(0, 0, 0));
         btCurso.setText("AGREGAR");
+        btCurso.setMaximumSize(new java.awt.Dimension(70, 24));
+        btCurso.setMinimumSize(new java.awt.Dimension(67, 24));
+        btCurso.setPreferredSize(new java.awt.Dimension(80, 28));
         btCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCursoActionPerformed(evt);
             }
         });
-        jPanelCurso.add(btCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 110, -1));
+        jPanelCurso.add(btCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 110, -1));
+
+        btLimpiarCurs.setBackground(new java.awt.Color(153, 255, 255));
+        btLimpiarCurs.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btLimpiarCurs.setForeground(new java.awt.Color(0, 0, 0));
+        btLimpiarCurs.setText("LIMPIAR");
+        btLimpiarCurs.setMaximumSize(new java.awt.Dimension(70, 24));
+        btLimpiarCurs.setMinimumSize(new java.awt.Dimension(67, 24));
+        btLimpiarCurs.setPreferredSize(new java.awt.Dimension(80, 28));
+        btLimpiarCurs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimpiarCursActionPerformed(evt);
+            }
+        });
+        jPanelCurso.add(btLimpiarCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 100, -1));
 
         JPanelContenedor.add(jPanelCurso, "card4");
 
-        jPanelMatricula.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelMatricula.setBackground(new java.awt.Color(204, 204, 153));
         jPanelMatricula.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("FORMULARIO PARA MATRICULAS");
-        jPanelMatricula.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 220, 20));
+        jPanelMatricula.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 310, 20));
 
         jLabel15.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Nombre:");
-        jPanelMatricula.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 70, -1));
+        jPanelMatricula.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 160, -1));
 
         jLabel16.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Curso:");
-        jPanelMatricula.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 40, -1));
+        jPanelMatricula.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 130, -1));
 
         jLabel17.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Nota:");
-        jPanelMatricula.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, -1, -1));
+        jPanelMatricula.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 140, -1));
 
+        jComboBoxCurso.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jComboBoxCurso.setForeground(new java.awt.Color(0, 0, 0));
         jComboBoxCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
         jPanelMatricula.add(jComboBoxCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 390, -1));
 
+        btMatricula.setBackground(new java.awt.Color(153, 255, 153));
+        btMatricula.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btMatricula.setForeground(new java.awt.Color(0, 0, 0));
         btMatricula.setText("AGREGAR");
+        btMatricula.setMaximumSize(new java.awt.Dimension(70, 24));
+        btMatricula.setMinimumSize(new java.awt.Dimension(68, 24));
+        btMatricula.setPreferredSize(new java.awt.Dimension(80, 28));
         btMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btMatriculaActionPerformed(evt);
             }
         });
-        jPanelMatricula.add(btMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 110, -1));
+        jPanelMatricula.add(btMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 110, -1));
 
+        jComboBoxEstudiante.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jComboBoxEstudiante.setForeground(new java.awt.Color(0, 0, 0));
         jComboBoxEstudiante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
         jPanelMatricula.add(jComboBoxEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 390, -1));
         jPanelMatricula.add(txtNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 390, -1));
 
+        btLimpiarMatric.setBackground(new java.awt.Color(153, 255, 255));
+        btLimpiarMatric.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btLimpiarMatric.setForeground(new java.awt.Color(0, 0, 0));
+        btLimpiarMatric.setText("LIMPIAR");
+        btLimpiarMatric.setMaximumSize(new java.awt.Dimension(70, 24));
+        btLimpiarMatric.setMinimumSize(new java.awt.Dimension(67, 24));
+        btLimpiarMatric.setPreferredSize(new java.awt.Dimension(80, 28));
+        btLimpiarMatric.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimpiarMatricActionPerformed(evt);
+            }
+        });
+        jPanelMatricula.add(btLimpiarMatric, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 100, -1));
+
         JPanelContenedor.add(jPanelMatricula, "card5");
 
-        jPanelDocenteList.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelDocenteList.setBackground(new java.awt.Color(204, 204, 153));
 
+        jTable2.setBackground(new java.awt.Color(204, 204, 153));
+        jTable2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTable2.setForeground(new java.awt.Color(0, 0, 0));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -347,8 +462,11 @@ DefaultTableModel modeloMatricula = new DefaultTableModel(new String[]{"Estudian
 
         JPanelContenedor.add(jPanelDocenteList, "card3");
 
-        jPanelEstudianteList.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelEstudianteList.setBackground(new java.awt.Color(204, 204, 153));
 
+        jTable1.setBackground(new java.awt.Color(204, 204, 153));
+        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -385,14 +503,17 @@ DefaultTableModel modeloMatricula = new DefaultTableModel(new String[]{"Estudian
 
         JPanelContenedor.add(jPanelEstudianteList, "card2");
 
-        jPanelCursoList.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelCursoList.setBackground(new java.awt.Color(204, 204, 153));
 
+        jTable3.setBackground(new java.awt.Color(204, 204, 153));
+        jTable3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTable3.setForeground(new java.awt.Color(0, 0, 0));
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo Curso", "Nombre Curso", "Nombre Docente"
+                "Codigo Curso", "Nombre Curso", "Codigo Docente"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -421,8 +542,11 @@ DefaultTableModel modeloMatricula = new DefaultTableModel(new String[]{"Estudian
 
         JPanelContenedor.add(jPanelCursoList, "card4");
 
-        jPanelMatriculaList.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelMatriculaList.setBackground(new java.awt.Color(204, 204, 153));
 
+        jTable4.setBackground(new java.awt.Color(204, 204, 153));
+        jTable4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTable4.setForeground(new java.awt.Color(0, 0, 0));
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -676,6 +800,30 @@ String codigo = txtCodEstudiante.getText();
         }
     }//GEN-LAST:event_btMatriculaActionPerformed
 
+    private void txtCodEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodEstudianteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodEstudianteActionPerformed
+
+    private void btLimpiarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarEstActionPerformed
+        // TODO add your handling code here:
+        limpiarCamposEstudiante();
+    }//GEN-LAST:event_btLimpiarEstActionPerformed
+
+    private void btLimpiarDoctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarDoctActionPerformed
+        // TODO add your handling code here:
+        limpiarCamposDocente();
+    }//GEN-LAST:event_btLimpiarDoctActionPerformed
+
+    private void btLimpiarCursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarCursActionPerformed
+        // TODO add your handling code here:
+        limpiarCamposCurso();
+    }//GEN-LAST:event_btLimpiarCursActionPerformed
+
+    private void btLimpiarMatricActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarMatricActionPerformed
+        // TODO add your handling code here:
+        limpiarCamposMatricula();
+    }//GEN-LAST:event_btLimpiarMatricActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -716,6 +864,10 @@ String codigo = txtCodEstudiante.getText();
     private javax.swing.JButton btCurso;
     private javax.swing.JButton btDocente;
     private javax.swing.JButton btEstudiante;
+    private javax.swing.JButton btLimpiarCurs;
+    private javax.swing.JButton btLimpiarDoct;
+    private javax.swing.JButton btLimpiarEst;
+    private javax.swing.JButton btLimpiarMatric;
     private javax.swing.JButton btMatricula;
     private javax.swing.JComboBox<String> jComboBoxCurso;
     private javax.swing.JComboBox<String> jComboBoxDocente;
